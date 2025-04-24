@@ -1,11 +1,8 @@
 services:
   acn:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/adamcavendish/apt-cacher-ng:latest
     restart: always
     volumes:
-    - "./data/config.yml:/etc/docker/registry/config.yml"
-    - "./data/cache:/data/cache"
+    - ./data/cache:/var/cache/apt-cacher-ng
     ports:
     - '3142:3142'
