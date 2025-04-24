@@ -1,4 +1,4 @@
-FROM debian:9
+FROM ubuntu:noble
 
 RUN set -uex; \
     apt-get update -y; \
@@ -10,14 +10,6 @@ RUN set -uex; \
     rm -rf /var/lib/apt/lists/*;
 
 COPY files/* /etc/apt-cacher-ng/
-
-LABEL org.label-schema.name="deployable/apt-cacher-ng" \
-      org.label-schema.version="1.6.0" \
-      org.label-schema.vendor="Deployable" \
-      org.label-schema.docker.cmd="docker run --restart always -d -v apt-cacher-ng-vol:/var/cache/apt-cacher-ng:rw -p 3142:3142 deployable/apt-cacher-ng" \
-      org.label-schema.url="https://github.com/deployable/docker-apt-cacher-ng" \
-      org.label-schema.vcs-url="https://github.com/deployable/docker-apt-cacher-ng.git" \
-      org.label-schema.schema-version="1.0" 
 
 EXPOSE 3142
 VOLUME ["/var/cache/apt-cacher-ng"]

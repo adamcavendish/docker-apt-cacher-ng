@@ -1,0 +1,11 @@
+services:
+  acn:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+    - "./data/config.yml:/etc/docker/registry/config.yml"
+    - "./data/cache:/data/cache"
+    ports:
+    - '3142:3142'
